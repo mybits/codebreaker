@@ -7,21 +7,21 @@ Feature: code-breaker submits guess
   Scenario: All exact matches
     Given the secret code is '1234'
     When I guess '1234'
-    The mark should be '++++'
+    Then mark should be '++++'
 
   Scenario: 2 exact matches, 2 numbers matches
     Given the secret code is '1234'
     When I guess '1243'
-    The mark should be '++--'
+    Then mark should be '++--'
 
   Scenario: 1 exact match, 3 numbers matches
     Given the secret code is '1234'
     When I guess '1432'
-    The mark should be '+---'
+    Then mark should be '+---'
 
   Scenario: 4 numbers matches
     Given the secret code is '1234'
     When I guess '4321'
-    The mark should be '----'
+    Then mark should be '----'
 
 
