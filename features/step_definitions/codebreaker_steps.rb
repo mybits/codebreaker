@@ -1,3 +1,18 @@
+class Output
+  def messages
+    @messages ||= []
+  end
+
+  def puts(message)
+    messages << message
+  end
+end
+
+def output
+   @output ||= Output.new
+end
+
+
 Given(/^that I'm not yet playing$/) do
 end
 
@@ -11,16 +26,3 @@ Then(/^I should see "([^"])*"$/) do |message|
   output.messages.should include(message)
 end
 
-class Output
-  def messages
-    @messages ||= []
-  end
-
-  def puts(message)
-    messages << message
-  end
-
-  def output
-    @output ||= Output.new
-  end
-end
