@@ -1,4 +1,7 @@
-$LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
+#!/usr/bin/env ruby
+
+lib = File.expand_path('../../lib', (__FILE__))
+$LOAD_PATH.unshift(lib)
 require 'codebreaker'
 
 game = Codebreaker::Game.new(STDOUT)
