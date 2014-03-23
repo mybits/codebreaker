@@ -4,24 +4,40 @@ Feature: code-breaker submits guess
 
   For each guess that matches the number and a position of a number in a secret code, the mark includes '+' sign. For each guess that matches the number but not the position in a secret code, the mark includes '-' sign.
 
-  Scenario: All exact matches
-    Given the secret code is '1234'
-    When I guess '1234'
-    Then mark should be '++++'
+  Scenario Outline: submit guess
+    Given the secret code is "<code>"
+    When I guess "<guess>"
+    Then the mark should be "<mark>"
 
-  Scenario: 2 exact matches, 2 numbers matches
-    Given the secret code is '1234'
-    When I guess '1243'
-    Then mark should be '++--'
+    Scenarios: no matches
+      | code | guess | mark |
+      | 1234 | 5555  |      |
 
-  Scenario: 1 exact match, 3 numbers matches
-    Given the secret code is '1234'
-    When I guess '1432'
-    Then mark should be '+---'
+    Scenarios: 1 number correct
+      | code | guess | mark |
+      | 1234 | 1555  | +    |
+      | 1234 | 2555  | -    |
 
-  Scenario: 4 numbers matches
-    Given the secret code is '1234'
-    When I guess '4321'
-    Then mark should be '----'
+    Scenarios: 2 numbers correct
+      | code | guess | mark |
+      | 1234 | 5254  | ++   |
+      | 1234 | 5154  | +-   |
+      | 1234 | 2545  | --   |
+
+
+    Scenarios: 3 numbers correct
+      | code | guess | mark |
+      | 1234 | 5234  | +++  |
+      | 1234 | 5134  | ++-  |
+      | 1234 | 5124  | +--  |
+      | 1234 | 5123  | ---  |
+
+    Scenarios: all numbers correct
+      | code | guess | mark |
+      | 1234 | 1234  | ++++ |
+      | 1234 | 1243  | ++-- |
+      | 1234 | 1423  | +--- |
+      | 1234 | 4321  | ---- |
+
 
 
