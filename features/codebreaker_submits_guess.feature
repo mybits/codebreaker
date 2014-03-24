@@ -5,9 +5,9 @@ Feature: code-breaker submits guess
   For each guess that matches the number and a position of a number in a secret code, the mark includes '+' sign. For each guess that matches the number but not the position in a secret code, the mark includes '-' sign.
 
   Scenario Outline: submit guess
-    Given the secret code is "<code>"
-    When I guess "<guess>"
-    Then the mark should be "<mark>"
+    Given the secret code is '<code>'
+    When I guess '<guess>'
+    Then the mark should be '<mark>'
 
     Scenarios: no matches
       | code | guess | mark |
