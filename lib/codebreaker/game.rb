@@ -9,5 +9,8 @@ module Codebreaker
       @output.puts "Welcome to Codebreaker!"
       @output.puts "Enter your guess:"
     end
+
+    def guess(guess)
+    end
   end
 end
