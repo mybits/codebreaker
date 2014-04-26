@@ -27,6 +27,10 @@ class Marker
     count
   end
 
+  def delete_first(code, n)
+    code.delete_at(code.index(n)) if code.index(n)
+  end
+
   def exact_match?(index)
     @guess[index] == @secret[index]
   end
